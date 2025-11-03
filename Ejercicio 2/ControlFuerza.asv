@@ -19,11 +19,11 @@ rob = SerialLink(L, 'name', 'Rob_fuerza', 'gravity', g);
 
 %% CONDICIONES INICIALES
 
-t1 = pi - (asin((2-sqrt(2))/sqrt(2))) - pi/4
-t2 = pi/4 - t1
+
+
 
 % Posición articular inicial (radianes)
-q_inicial = [t1; t2];
+q_inicial = [1.9286; -1.1432];
 
 % Velocidades articulares iniciales (en reposo)
 qd_inicial = [0; 0];
