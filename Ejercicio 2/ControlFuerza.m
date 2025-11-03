@@ -3,6 +3,7 @@
 % Limpiar Workspace y figuras
 %clear all; close all; clc;
 global rob fd Kenv n kpf kvf d_pared
+n = [1/sqrt(2); 1/sqrt(2)];
 
 % --- A. DEFINICIÓN DE LINKS Y ROBOT SERIALLINK ---
 L(1) = Link('revolute', 'd', 0, 'a', 1, 'alpha', 0); 
