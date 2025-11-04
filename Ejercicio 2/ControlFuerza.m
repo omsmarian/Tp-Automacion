@@ -22,6 +22,7 @@ rob = SerialLink(L, 'name', 'Rob_fuerza', 'gravity', g);
 t1 = pi - (asin((2-sqrt(2))/sqrt(2))) - pi/4
 t2 = pi/4 - t1
 
+
 % Posición articular inicial (radianes)
 q_inicial = [t1; t2];
 
@@ -46,7 +47,7 @@ fprintf('  z = %.4f m\n', pos_inicial(3));
 
 %% TRAYECTORIA DE ACERCAMIENTO SEGURA
 
-t = [0:0.02:5]'; % Tiempo de simulación propuesto
+t = [0:0.001:5]'; % Tiempo de simulación propuesto
 if isrow(t); t = t'; end
 N = length(t);
 
@@ -102,7 +103,7 @@ text(punto2_pared(1), punto2_pared(2), 0, ' P2(0,2)', ...
      'FontSize', 10, 'FontWeight', 'bold', 'Color', 'blue');
 
 % Animar robot nominal
-rob.plot(Q_nominal, 'trail', 'b-', 'workspace', [-1 3 -1 3 -1 2]);
-title('Robot NOMINAL (Sin Perturbaciones)');
-grid on;
-hold off;
+%rob.plot(, 'trail', 'b-', 'workspace', [-1 3 -1 3 -1 2]);
+%title('Robot NOMINAL (Sin Perturbaciones)');
+%grid on;
+%hold off;
