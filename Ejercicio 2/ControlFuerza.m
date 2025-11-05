@@ -72,7 +72,7 @@ fprintf('  z = %.4f m\n', pos_inicial(3));
 fprintf('\n=== CONFIGURACIÓN DE SIMULACIÓN ===\n');
 
 % Tiempo de simulación
-t = [0:0.001:5]'; 
+t = [0:0.001:3]'; 
 if isrow(t); t = t'; end
 N = length(t);
 num_columnas = length(t);
