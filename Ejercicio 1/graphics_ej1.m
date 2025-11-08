@@ -111,14 +111,14 @@ hold off;
 
 % ========== ANIMACIÓN 3D: ROBOT NOMINAL ==========
 % Definir los puntos de la pared
-punto1_pared = [2; 0; 0];
-punto2_pared = [0; 2; 0];
+punto1_pared = [2; 0; -1];
+punto2_pared = [0; 2; -1];
 altura_pared = 1.5;
 
 % Crear vértices del rectángulo de la pared
 vertices_pared = [
-    punto1_pared(1), punto1_pared(2), 0;
-    punto2_pared(1), punto2_pared(2), 0;
+    punto1_pared(1), punto1_pared(2), punto1_pared(3);
+    punto2_pared(1), punto2_pared(2), punto2_pared(3);
     punto2_pared(1), punto2_pared(2), altura_pared;
     punto1_pared(1), punto1_pared(2), altura_pared
 ];
@@ -131,10 +131,6 @@ hold on;
 patch('Vertices', vertices_pared, 'Faces', [1 2 3 4], ...
       'FaceColor', [0.8 0.8 0.8], 'FaceAlpha', 0.5, ...
       'EdgeColor', 'k', 'LineWidth', 2);
-
-plot3([punto1_pared(1), punto2_pared(1)], ...
-      [punto1_pared(2), punto2_pared(2)], ...
-      [0, 0], 'k-', 'LineWidth', 3);
 
 text(punto1_pared(1), punto1_pared(2), 0, ' P1(2,0)', ...
      'FontSize', 10, 'FontWeight', 'bold', 'Color', 'blue');
@@ -155,10 +151,6 @@ hold on;
 patch('Vertices', vertices_pared, 'Faces', [1 2 3 4], ...
       'FaceColor', [0.8 0.8 0.8], 'FaceAlpha', 0.5, ...
       'EdgeColor', 'k', 'LineWidth', 2);
-
-plot3([punto1_pared(1), punto2_pared(1)], ...
-      [punto1_pared(2), punto2_pared(2)], ...
-      [0, 0], 'k-', 'LineWidth', 3);
 
 text(punto1_pared(1), punto1_pared(2), 0, ' P1(2,0)', ...
      'FontSize', 10, 'FontWeight', 'bold', 'Color', 'blue');

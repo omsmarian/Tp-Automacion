@@ -101,24 +101,3 @@ fila_0 = (zeros(1, num_columnas))';      % Sin componente en otra dirección
 Fd = [t, fila_10, fila_0];
 
 fprintf('Fuerza deseada: 10N constante\n');
-
-%% ========== GRÁFICO 1: TRAYECTORIAS CARTESIANAS ==========
-figure('Name', 'Trayectorias Cartesianas', 'NumberTitle', 'off');
-subplot(3,1,1);
-plot(t, [X, Y], 'LineWidth', 1.5);
-title('Posición Polinómica (X, Y)');
-legend('X', 'Y');
-grid on;
-
-subplot(3,1,2);
-plot(t, [X_d, Y_d], 'LineWidth', 1.5);
-title('Velocidad Polinómica (X_d, Y_d)');
-legend('X_d', 'Y_d');
-grid on;
-
-subplot(3,1,3);
-plot(t, [X_dd, Y_dd], 'LineWidth', 1.5);
-title('Aceleración Polinómica (X_dd, Y_dd)');
-legend('X_dd', 'Y_dd');
-xlabel('Tiempo (s)');
-grid on;

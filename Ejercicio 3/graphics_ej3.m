@@ -93,29 +93,35 @@ set(gca, 'FontSize', 11);
 %% === GRÁFICO 4b: POSICIÓN CARTESIANA vs TIEMPO ===
 fprintf('Generando gráfico 4b: Posición cartesiana vs tiempo...\n');
 
-figure('Name', 'Posición Cartesiana vs Tiempo', 'NumberTitle', 'off', 'Position', [100 100 1200 500]);
+figure('Name', 'Posición Cartesiana vs Tiempo', 'NumberTitle', 'off', 'Position', [100 100 1400 900]);
 
-% No Perturbado
-subplot(1,2,1);
-plot(t_NP, pos_cart_NP(:,1), 'b-', 'LineWidth', 1.5); hold on;
-plot(t_NP, pos_cart_NP(:,2), 'r-', 'LineWidth', 1.5);
-grid on;
-xlabel('Tiempo (s)', 'FontSize', 12);
-ylabel('Posición (m)', 'FontSize', 12);
-title('Robot NO Perturbado', 'FontSize', 14, 'FontWeight', 'bold');
-legend('X', 'Y', 'Location', 'best');
-set(gca, 'FontSize', 11);
+% --- FILA 2: Robot NO Perturbado ---
 
-% Perturbado
-subplot(1,2,2);
-plot(t_P, pos_cart_P(:,1), 'b-', 'LineWidth', 1.5); hold on;
-plot(t_P, pos_cart_P(:,2), 'r-', 'LineWidth', 1.5);
+subplot(2,1,1);
+plot(t, X, 'b--', 'LineWidth', 1, 'DisplayName', 'X deseado'); hold on;
+plot(t_NP, pos_cart_NP(:,1), 'b-', 'LineWidth', 1.5, 'DisplayName', 'X real');
+plot(t, Y, 'r--', 'LineWidth', 1, 'DisplayName', 'Y deseado');
+plot(t_NP, pos_cart_NP(:,2), 'r-', 'LineWidth', 1.5, 'DisplayName', 'Y real');
 grid on;
-xlabel('Tiempo (s)', 'FontSize', 12);
-ylabel('Posición (m)', 'FontSize', 12);
-title('Robot PERTURBADO (80%)', 'FontSize', 14, 'FontWeight', 'bold');
-legend('X', 'Y', 'Location', 'best');
-set(gca, 'FontSize', 11);
+xlabel('Tiempo (s)', 'FontSize', 11);
+ylabel('Posición (m)', 'FontSize', 11);
+title('NO Perturbado - Comparación X,Y', 'FontSize', 13, 'FontWeight', 'bold');
+legend('Location', 'best');
+set(gca, 'FontSize', 10);
+
+% --- FILA 3: Robot PERTURBADO ---
+
+subplot(2,1,2);
+plot(t, X, 'b--', 'LineWidth', 1, 'DisplayName', 'X deseado'); hold on;
+plot(t_P, pos_cart_P(:,1), 'b-', 'LineWidth', 1.5, 'DisplayName', 'X real');
+plot(t, Y, 'r--', 'LineWidth', 1, 'DisplayName', 'Y deseado');
+plot(t_P, pos_cart_P(:,2), 'r-', 'LineWidth', 1.5, 'DisplayName', 'Y real');
+grid on;
+xlabel('Tiempo (s)', 'FontSize', 11);
+ylabel('Posición (m)', 'FontSize', 11);
+title('PERTURBADO - Comparación X,Y', 'FontSize', 13, 'FontWeight', 'bold');
+legend('Location', 'best');
+set(gca, 'FontSize', 10);
 
 %% === GRÁFICO 4c: VISTA AÉREA XY ===
 fprintf('Generando gráfico 4c: Vista aérea (plano XY)...\n');
@@ -244,7 +250,7 @@ fprintf('  - Datos animación P: %d puntos (%.1f%% de los datos)\n', ...
           length(indices_P), 100*length(indices_P)/N_P);
 
 %% === GRÁFICO 4d: ANIMACIÓN DEL MOVIMIENTO ===
-fprintf('Generando gráfico 4d: Animación del manipulador (puede tardar)...\n');
+fprintf('Generando gráfico 4d: Animación del manipulador (mucho más rápida)...\n');
 
 % Crear figura para animación - No Perturbado
 figure('Name', 'Animación Robot NO PERTURBADO', 'NumberTitle', 'off');
@@ -253,13 +259,13 @@ hold on;
 % Dibujar pared
 patch('Vertices', vertices_pared, 'Faces', [1 2 3 4], ...
       'FaceColor', [0.8 0.8 0.8], 'FaceAlpha', 0.5, ...
-      'EdgeColor', 'k', 'LineWidth', 2);
+      'EdgeColor', 'k', 'LineWidth', 1);
 
-%plot3([2, 0], [0, 2], [0, 0], 'k-', 'LineWidth', 3);
+%plot3([2, 0], [0, 2], [0, 0], 'k-', 'LineWidth', 0);
 text(2, 0, 0, ' P1(2,0)', 'FontSize', 10, 'FontWeight', 'bold', 'Color', 'blue');
 text(0, 2, 0, ' P2(0,2)', 'FontSize', 10, 'FontWeight', 'bold', 'Color', 'blue');
 
-% Animar robot nominal
+% Animar robot nominal con datos submuestreados
 rob.plot(q_NP_animacion, 'trail', 'b-', 'workspace', [-1 3 -1 3 -1 2]);
 title('Robot NO PERTURBADO', 'FontSize', 14, 'FontWeight', 'bold');
 grid on;
@@ -273,13 +279,13 @@ hold on;
 % Dibujar pared
 patch('Vertices', vertices_pared, 'Faces', [1 2 3 4], ...
       'FaceColor', [0.8 0.8 0.8], 'FaceAlpha', 0.5, ...
-      'EdgeColor', 'k', 'LineWidth', 2);
+      'EdgeColor', 'k', 'LineWidth', 1);
 
-%plot3([2, 0], [0, 2], [0, 0], 'k-', 'LineWidth', 3);
+%plot3([2, 0], [0, 2], [0, 0], 'k-', 'LineWidth', 0);
 text(2, 0, 0, ' P1(2,0)', 'FontSize', 10, 'FontWeight', 'bold', 'Color', 'blue');
 text(0, 2, 0, ' P2(0,2)', 'FontSize', 10, 'FontWeight', 'bold', 'Color', 'blue');
 
-% Animar robot perturbado
+% Animar robot perturbado con datos submuestreados
 rob2.plot(q_P_animacion, 'trail', 'r-', 'workspace', [-1 3 -1 3 -1 2]);
 title('Robot PERTURBADO (80%)', 'FontSize', 14, 'FontWeight', 'bold');
 grid on;
@@ -293,5 +299,7 @@ fprintf('  • 4a: Ángulos de joints vs tiempo\n');
 fprintf('  • 4b: Posición cartesiana vs tiempo\n');
 fprintf('  • 4c: Vista aérea (plano XY)\n');
 fprintf('  • 4e: Fuerza deseada vs ejercida\n');
-fprintf('  • 4d: Animación del manipulador (al final)\n');
+fprintf('  • 4d: Animación del manipulador (ACELERADA)\n');
 fprintf('\nCada gráfico muestra comparación entre robot nominal y perturbado.\n');
+fprintf('\nNOTA: La animación usa submuestreo (factor=%d) para mayor velocidad.\n', factor_submuestreo);
+fprintf('      Ajusta "factor_submuestreo" para controlar la velocidad.\n');

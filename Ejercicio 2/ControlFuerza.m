@@ -88,24 +88,6 @@ Fd = [t, fila_10, fila_0];
 
 fprintf('Fuerza deseada: 10N constante\n');
 
-%% DEFINICIÓN DE LA PARED
-% Puntos de la pared
-punto1_pared = [2; 0; 0];
-punto2_pared = [0; 2; 0];
-altura_pared = 1.5;
-
-% Crear vértices del rectángulo de la pared
-vertices_pared = [
-    punto1_pared(1), punto1_pared(2), 0;
-    punto2_pared(1), punto2_pared(2), 0;
-    punto2_pared(1), punto2_pared(2), altura_pared;
-    punto1_pared(1), punto1_pared(2), altura_pared
-];
-
-fprintf('\n=== PARED CONFIGURADA ===\n');
-fprintf('Punto 1: (%.1f, %.1f, %.1f)\n', punto1_pared);
-fprintf('Punto 2: (%.1f, %.1f, %.1f)\n', punto2_pared);
-
 %% LISTO PARA SIMULINK
 fprintf('\n=== ✓ SETUP COMPLETO ===\n');
 fprintf('Ejecuta el modelo de Simulink ahora.\n');
